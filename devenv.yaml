@@ -1,0 +1,6 @@
+inputs:
+  nixpkgs-unstable:
+    url: github:NixOS/nixpkgs/nixos-unstable
+  nix-matlab:
+    url: gitlab:doronbehar/nix-matlab
+allowUnfree: true

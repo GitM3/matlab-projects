@@ -1,0 +1,7 @@
+/home/zander/Development/matlab/.devenv/flake.json
+/home/zander/Development/matlab/.devenv.flake.nix
+/home/zander/Development/matlab/.env
+/home/zander/Development/matlab/devenv.local.nix
+/home/zander/Development/matlab/devenv.lock
+/home/zander/Development/matlab/devenv.nix
+/home/zander/Development/matlab/devenv.yaml
