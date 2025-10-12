@@ -1,2 +1,6 @@
 installer/*
 installer/
+
+.devenv/
+.devenv/*
+.Trash*/*
