@@ -1,6 +1,8 @@
 installer/*
 installer/
 
+.direnv/
+.direnv/*
 .devenv/
 .devenv/*
 .Trash*/*

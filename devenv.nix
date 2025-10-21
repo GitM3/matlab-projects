@@ -25,16 +25,15 @@
   # Run docker
   scripts.run-matlab.exec = ''
     podman run --rm -it \
-        -p 8888:8888 \
-        --shm-size=512M \
-        --userns=keep-id \
-        --group-add sudo \
-        --security-opt label=disable \
-        -u "$(id -u)":"$(id -g)" \
-        -v "$PWD:/workspace:rw" \
-        -w /workspace \
-        matlab:R2025b \
-        -browser
+      --userns=keep-id \
+      --user matlab \
+      --security-opt label=disable \
+      --shm-size=512M \
+      -p 8888:8888 \
+      -v "$PWD:/workspace:rw" \
+      -w /workspace \
+      matlab:R2025b \
+      -browser
   ''; # docker run -it --rm -p 8888:8888 --shm-size=512M mathworks/matlab:r2025b -browser
 
   enterShell = ''
