@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<demos>
+  <demoitem>
+    <source>PickandPlaceWorkflowInUnity3DUsingROSExample</source>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex56009575</metadata>
+    <thumbnail>html/PickandPlaceWorkflowInUnity3DUsingROSExample_01.png</thumbnail>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>robotics</product>
+    <product>ros</product>
+    <product>stateflow</product>
+    <file component="shared_robotics_ros" timestamp="1655915150">exampleCommandActivateGripperROSUnity.m</file>
+    <file component="shared_robotics_ros" timestamp="1657934958">exampleCommandComputeGraspPoseROSUnity.m</file>
+    <file component="shared_robotics_ros" timestamp="1657934958">exampleCommandDetectPartsROSUnity.m</file>
+    <file component="shared_robotics_ros" timestamp="1657934958">exampleCommandMoveToTaskConfigROSUnity.m</file>
+    <file component="shared_robotics_ros" timestamp="1657934958">exampleCommandPickingLogicROSUnity.m</file>
+    <file component="shared_robotics_ros" timestamp="1657934958">exampleHelperCoordinatorPickPlaceROSUnity.m</file>
+    <file component="shared_robotics_ros" timestamp="1657934958">exampleHelperFlowChartPickPlaceROSUnity.sfx</file>
+    <file component="shared_robotics_ros" timestamp="1655915150">exampleHelperKINOVAGen3GripperROSUnity.mat</file>
+    <file component="shared_robotics_ros" timestamp="1657934958">exampleHelperPackageJointTrajectoryKINOVAROSUnity.m</file>
+    <file component="shared_robotics_ros" timestamp="1658458757">PNPScripts.zip</file>
+    <file component="shared_robotics_ros" timestamp="1657934958">Robot.zip</file>
+    <file component="shared_robotics_ros" timestamp="1658458757">Control_Msgs.zip</file>
+    <file component="shared_robotics_ros" timestamp="1661277228">helperConnectROSUnity.m</file>
+    <file component="shared_robotics_ros" timestamp="1658499397">unity_setup.bat</file>
+    <file component="shared_robotics_ros" timestamp="1658499397">unity_setup.sh</file>
+    <file component="shared_robotics_ros" timestamp="1661277228">helperKillTCPEndpointNode.m</file>
+    <dir component="shared_robotics_ros" timestamp="1738359666">unity_robotics_demo_msgs</dir>
+  </demoitem>
+  <demoitem>
+    <source>SignFollowingRobotWithTimeSynchronizationROSGazeboExample</source>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex71776975</metadata>
+    <thumbnail>html/SignFollowingRobotWithTimeSynchronizationROSGazeboExample_01.png</thumbnail>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>simulink</product>
+    <product>robotics</product>
+    <product>ros</product>
+    <file component="shared_robotics_ros" timestamp="1654095114">signFollowingRobotROSCoSim.slx</file>
+  </demoitem>
+  <demoitem>
+    <source>DesignAndSimulateAMobileManipulatorExample</source>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex71846485</metadata>
+    <thumbnail>html/DesignAndSimulateAMobileManipulatorExample_02.png</thumbnail>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>simulink</product>
+    <product>robotics</product>
+    <product>ros</product>
+    <product>nav</product>
+    <product>images</product>
+    <product>nnet</product>
+    <product>stateflow</product>
+    <file component="shared_robotics_ros" timestamp="1734389868">PickPlaceWorkflowSimulinkMobileArm.slx</file>
+    <file component="shared_robotics_ros" timestamp="1623862294">Tasks.m</file>
+    <file component="shared_robotics_ros" timestamp="1623862294">helperActivateGripperMobileArm.m</file>
+    <file component="shared_robotics_ros" timestamp="1623862294">helperCheckIfGoal.m</file>
+    <file component="shared_robotics_ros" timestamp="1623862294">helperKINOVAGen3MobileArmPickPlace.mat</file>
+    <file component="shared_robotics_ros" timestamp="1623862294">helperPlotPathMobileArm.m</file>
+    <file component="shared_robotics_ros" timestamp="1623862294">helperRecyclingWarehouseMap.mat</file>
+    <file component="shared_robotics_ros" timestamp="1623862294">helperSetCurrentRobotJConfig.m</file>
+    <file component="shared_robotics_ros" timestamp="1734389868">helperYolo2Detector.mat</file>
+    <workFolder>MobileManipEx</workFolder>
+  </demoitem>
+  <demoitem>
+    <source>GenerateROSControlPluginFor3DShapeTracingManipulatorExample</source>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex79142233</metadata>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>simulink</product>
+    <product>robotics</product>
+    <product>ros</product>
+    <product>vision</product>
+    <file component="shared_robotics_ros" timestamp="1705411372">helperCreatePathFromWaypoints.m</file>
+    <file component="shared_robotics_ros" timestamp="1705411372">helperFlipNormalsTowardsSensor.m</file>
+    <file component="shared_robotics_ros" timestamp="1736505139">shapeTracingController.slx</file>
+    <file component="shared_robotics_ros" timestamp="1705411372">helperAddGripper.m</file>
+  </demoitem>
+  <demoitem>
+    <source>AutomatedGenerationAndDeployOfROS2ControlForControllerExample</source>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex97782836</metadata>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>ros</product>
+    <product>robotics</product>
+    <product>vision</product>
+    <product>simulink</product>
+    <product>simulinkcoder</product>
+    <file component="shared_robotics_ros" timestamp="1721302683">shapeTracingController_ros2.slx</file>
+    <file component="shared_robotics_ros" timestamp="1721302683">ur5e_joint_configuration.mat</file>
+  </demoitem>
+  <demoitem>
+    <source>DesignControllerThroughSimulinkAndUnrealEngineCosimExample</source>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex98972264</metadata>
+    <thumbnail>html/DesignControllerThroughSimulinkAndUnrealEngineCosimExample_02.png</thumbnail>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>ros</product>
+    <product>robotics</product>
+    <product>vision</product>
+    <product>simulink</product>
+    <product>sl3d</product>
+    <file component="shared_robotics_ros" timestamp="1721230731">ShapeTracingSimExample.slx</file>
+    <file component="shared_robotics_ros" timestamp="1721060810">fuselage_link.mat</file>
+    <file component="shared_robotics_ros" timestamp="1721230731">helperGenerateJointConfig.m</file>
+    <file component="shared_robotics_ros" timestamp="1721230731">helperROS2AddGripper.m</file>
+    <file component="shared_robotics_ros" timestamp="1721230731">helperROS2CreatePathFromWaypoints.m</file>
+    <file component="shared_robotics_ros" timestamp="1721230731">helperROS2FlipNormalsTowardsSensor.m</file>
+    <file component="shared_robotics_ros" timestamp="1721230731">helperSetupSim3DScene.m</file>
+    <dir component="shared_robotics_ros" timestamp="1721230731">Actors</dir>
+  </demoitem>
+</demos>

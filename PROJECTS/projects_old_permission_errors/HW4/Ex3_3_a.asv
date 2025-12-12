@@ -1,0 +1,84 @@
+clear      % ワークスペースからすべての変数を消去
+close all  % すべてのFigureを消去
+clc        % コマンド ウィンドウのクリア
+
+% --- システムの物理パラメータ ---
+u      = 1.0;    % 入力電圧 [V]
+R      = 5.0;    % 電気子抵抗 [Ω]
+L      = 1e-3;   % インダクタンス [H]
+K_e    = 5e-2;   % 逆起電力定数 [Vs/rad]
+K_t    = 5e-2;   % トルク定数 [Nm/A]
+D      = 1e-5;   % 粘性摩擦係数 [Nm·s/rad]
+J      = 1e-5;   % 慣性モーメント [kg·m^2]
+
+% --- パラメータ掃引：負荷トルク ---
+tl_load = [0.001 0.005 0.010 0.015];  % [Nm]
+colors  = lines(numel(tl_load));
+
+% --- Simulink 実行設定 ---
+Endtime  = 0.2;              % シミュレーション時間 [s]
+filename = 'Ex3_3_a_sim';    % Simulink モデル名（拡張子なし）
+
+% --- 図の準備 ---
+tiledlayout(2,1,'Padding','compact','TileSpacing','compact');
+ax1 = nexttile(1); hold(ax1,'on'); grid(ax1,'on');
+title(ax1,'Angular speed \omega(t) for different load torques');
+ylabel(ax1,'\omega(t) [rad/s]');
+
+ax2 = nexttile(2); hold(ax2,'on'); grid(ax2,'on');
+title(ax2,'Input voltage u(t) and load torque \tau_L(t)');
+ylabel(ax2,'u(t) [V]');
+xlabel(ax2,'t [s]');
+yyaxis(ax2,'right'); ylabel(ax2,'\tau_L(t) [Nm]');
+yyaxis(ax2,'left');   % return left axis active
+
+leg = strings(1,numel(tl_load));
+u_plotted = false;    % so we don't plot identical u(t) multiple times
+
+for i = 1:numel(tl_load)
+    tL = tl_load(i);
+    leg(i) = sprintf('\\tau_L = %.3f Nm', tL);
+
+    % Prepare simulation input and set the load torque variable used in the model
+    si = Simulink.SimulationInput(filename);
+    si = si.setVariable('t_load', tL);
+    si = si.setModelParameter('StopTime', num2str(Endtime));
+
+    % Run
+    out = sim(si);
+
+    % Retrieve logged signals
+    % Assumes 'simout' is a timeseries/bus with columns:
+    %   col1: omega(t), col2: u(t), (optional) col3: tau_L(t)
+    simout = out.get('simout');
+    ts = simout.time;
+    data = simout.Data;
+
+    omega = data(:,1);
+    u_sig = data(:,min(2,size(data,2)));  % safe if only one column
+    tau_sig = data(:,3);              % model-provided \tau_L(t)
+   
+
+    % Plot omega on the top axes (one curve per load)
+    plot(ax1, ts, omega, 'LineWidth', 1.5, 'Color', colors(i,:), ...
+         'DisplayName', leg(i));
+
+    % Bottom axes: left y-axis = u(t), right y-axis = tau_L(t)
+    % Plot u(t) only once (it's the same for all loads unless your model changes it)
+    if ~u_plotted
+        yyaxis(ax2,'left');
+        plot(ax2, ts, u_sig, 'LineWidth', 1.5, 'DisplayName','u(t)');
+        u_plotted = true;
+    end
+    yyaxis(ax2,'right');
+    plot(ax2, ts, tau_sig, 'LineWidth', 1.2, 'Color', colors(i,:), ...
+         'DisplayName', sprintf('\\tau_L(t) for %.3f', tL));
+end
+
+% Finalize legends/limits
+legend(ax1,'Location','best'); ylim(ax1,[0 25]);
+yyaxis(ax2,'left');  ylim(ax2,[0 2.0]);
+yyaxis(ax2,'right'); % autoscale for tau_L
+legend(ax2,'Location','best');
+
+sgtitle('DC Motor Simulation (sweep over load torque)');

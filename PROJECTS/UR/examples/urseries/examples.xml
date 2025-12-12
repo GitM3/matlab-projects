@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<demos>
+  <demoitem>
+    <source>GettingStartedStandaloneROSNodeGenerationURExample</source>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex42689842</metadata>
+    <thumbnail>html/GettingStartedStandaloneROSNodeGenerationURExample_01.png</thumbnail>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>urseries</product>
+    <product>ros</product>
+    <product>robotics</product>
+    <product>matlabcoder</product>
+    <file component="urseries" timestamp="1690282412">eampleHelperTransferLaunchScriptURCodegen.m</file>
+    <file component="urseries" timestamp="1701361350">urStandaloneROSNodeGenerationFcnGazebo.m</file>
+    <file component="urseries" timestamp="1701361350">urStandaloneROSNodeGenerationFcnURSim.m</file>
+  </demoitem>
+  <demoitem>
+    <source>GettingStartedURRTDELibraryURSeriesFromSimulinkExample</source>
+    <type>model</type>
+    <extension>mlx</extension>
+    <metadata>ex45189781</metadata>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>urseries</product>
+    <product>robotics</product>
+    <file component="urseries" open="open" timestamp="1738361289">gettingStartedExampleRTDEBlocks.slx</file>
+  </demoitem>
+  <demoitem>
+    <source>MotionPlanningRBTSimulationUR5eBinPickingManipulatorRRTExample</source>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex52169937</metadata>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>optim</product>
+    <product>robotics</product>
+    <file component="urseries" timestamp="1676449773">exampleHelperAddGripper.m</file>
+    <file component="urseries" timestamp="1676449773">exampleHelperAttachPart.m</file>
+    <file component="urseries" timestamp="1676449773">exampleHelperGenerateGT.m</file>
+    <file component="urseries" timestamp="1676449773">exampleHelperPlotBin.m</file>
+    <file component="urseries" timestamp="1676449773">exampleHelperPlotParts.m</file>
+    <file component="urseries" timestamp="1676449773">exampleHelperSelectPart.m</file>
+    <dir component="urseries" timestamp="1719565111">meshes</dir>
+  </demoitem>
+  <demoitem>
+    <source>PickPVCFittingsDifferentShapesSemiStructuredUR5eExample</source>
+    <project cmSystem="" component="urseries" type="main">PVCBinPickingUR5e</project>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex58874581</metadata>
+    <thumbnail>html/PickPVCFittingsDifferentShapesSemiStructuredUR5eExample_03.png</thumbnail>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>urseries</product>
+    <product>vision</product>
+    <product>nnet</product>
+    <product>images</product>
+    <product>matlabcoder</product>
+    <product>optim</product>
+    <product>ros</product>
+    <product>robotics</product>
+    <product>stats</product>
+    <workFolder>PVCBinPicking</workFolder>
+  </demoitem>
+  <demoitem>
+    <source>GazeboSimulationSemiStructuredIntelligentBinPickingUR5eExample</source>
+    <project cmSystem="" component="urseries" type="main">BinPickingUR5eSimulation</project>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex76498503</metadata>
+    <thumbnail>html/GazeboSimulationSemiStructuredIntelligentBinPickingUR5eExample_01.png</thumbnail>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>urseries</product>
+    <product>vision</product>
+    <product>images</product>
+    <product>nnet</product>
+    <product>matlabcoder</product>
+    <product>ros</product>
+    <product>optim</product>
+    <product>robotics</product>
+    <product>stats</product>
+    <workFolder>BinPickingUR5eSim</workFolder>
+  </demoitem>
+  <demoitem>
+    <source>GettingStartedControllingUR5eUsingRTDEInterfaceExample</source>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex77305161</metadata>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>urseries</product>
+  </demoitem>
+  <demoitem>
+    <source>SemiStructuredIntelligentBinPickingUR5eHardwareProjectExample</source>
+    <project cmSystem="" component="urseries" type="main">BinPickingUR5eHW</project>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex79204800</metadata>
+    <thumbnail>html/SemiStructuredIntelligentBinPickingUR5eHardwareProjectExample_01.png</thumbnail>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>urseries</product>
+    <product>vision</product>
+    <product>nnet</product>
+    <product>images</product>
+    <product>matlabcoder</product>
+    <product>optim</product>
+    <product>ros</product>
+    <product>robotics</product>
+    <product>stats</product>
+    <workFolder>BinPickingUR5eHW</workFolder>
+  </demoitem>
+  <demoitem>
+    <source>SimulateUR5MATLABAndGazeboGlueDispensingWindshieldExample</source>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex80298360</metadata>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>urseries</product>
+    <product>ros</product>
+    <product>robotics</product>
+    <file component="urseries" timestamp="1677060704">exampleHelperGetFinalWaypointData.m</file>
+    <file component="urseries" timestamp="1677060704">exampleHelperSelectWaypoints.m</file>
+    <file component="urseries" timestamp="1677060704">exampleHelperSetOrientations.m</file>
+    <file component="urseries" timestamp="1677060704">exampleHelperURGenerateTrajectory.m</file>
+    <file component="urseries" timestamp="1656332194">generateAndTransferLaunchScript.m</file>
+    <file component="urseries" timestamp="1677060704">glueDispenserMesh.STL</file>
+    <file component="urseries" timestamp="1677060704">universalRobots.rights</file>
+    <file component="urseries" timestamp="1677060704">ur_glue_dispensing_gazebo.zip</file>
+    <file component="urseries" timestamp="1677060704">windshieldv3.stl</file>
+    <file component="urseries" timestamp="1677060704">generateAndTransferLaunchScriptGlueDispensing.m</file>
+  </demoitem>
+  <demoitem>
+    <source>GettingStartedURScriptExecutionCommandsHandbackControlURExample</source>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex80716319</metadata>
+    <thumbnail>html/GettingStartedURScriptExecutionCommandsHandbackControlURExample_02.png</thumbnail>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>urseries</product>
+    <product>ros</product>
+    <file component="urseries" timestamp="1690280841">generateAndTransferLaunchScriptForHybridWorkflow.m</file>
+  </demoitem>
+  <demoitem>
+    <source>GettingStartedControllingSimulatedUR5eExample</source>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex81223898</metadata>
+    <thumbnail>html/GettingStartedControllingSimulatedUR5eExample_01.png</thumbnail>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>urseries</product>
+    <product>ros</product>
+    <product>robotics</product>
+    <file component="urseries" timestamp="1677079995">generateAndTransferLaunchScriptGettingStarted.m</file>
+  </demoitem>
+  <demoitem>
+    <source>SimulinkIntelligentBinPickUR5ePVCExample</source>
+    <project cmSystem="" component="urseries" type="main">SimulinkBinPickPVCUR5e</project>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex83586834</metadata>
+    <thumbnail>html/SimulinkIntelligentBinPickUR5ePVCExample_10.png</thumbnail>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>simulink</product>
+    <product>stateflow</product>
+    <product>robotics</product>
+    <product>vision</product>
+    <product>nnet</product>
+    <product>images</product>
+    <product>ros</product>
+    <product>optim</product>
+    <product>stats</product>
+    <product>urseries</product>
+    <product>matlabcoder</product>
+    <workFolder>SimulinkBinPickingPVC</workFolder>
+  </demoitem>
+  <demoitem>
+    <source>GettingStartedControllingUR5eUsingROS2Example</source>
+    <type>live</type>
+    <extension>mlx</extension>
+    <metadata>ex95005139</metadata>
+    <sandboxPublished/>
+    <product>matlab</product>
+    <product>urseries</product>
+    <product>ros</product>
+    <product>robotics</product>
+    <file component="urseries" timestamp="1704811544">generateAndTransferLaunchScriptROS2GettingStarted.m</file>
+  </demoitem>
+</demos>

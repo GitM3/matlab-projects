@@ -15,22 +15,22 @@
       matlab-mex
     ]);
   # Build docker image: https://github.com/mathworks-ref-arch/matlab-dockerfile/tree/main/alternates/building-on-matlab-docker-image
+  # Clone first: git clone https://github.com/mathworks-ref-arch/matlab-dockerfile.git
+
   scripts.build-matlab.exec = ''
-    git clone https://github.com/mathworks-ref-arch/matlab-dockerfile.git
-    podman build \
-      --build-arg ADDITIONAL_PRODUCTS="Simulink Control_System_Toolbox ROS_Toolbox Robotics_System_Toolbox Robotics_System_Toolbox_Support_Package_for_Universal_Robots_UR_Series_Manipulators " \
+    echo "Execute following if needed"
+    docker build \
+      --build-arg ADDITIONAL_PRODUCTS="Simulink System_Identification_Toolbox Control_System_Toolbox ROS_Toolbox Robotics_System_Toolbox Robotics_System_Toolbox_Support_Package_for_Universal_Robots_UR_Series_Manipulators " \
       -t matlab:R2025b \
       matlab-dockerfile/alternates/building-on-matlab-docker-image
   '';
-  # Run docker
+  # Run docker: run chmod 777 PROJECTS/ if needed
   scripts.run-matlab.exec = ''
-    podman run --rm -it \
-      --userns=keep-id \
-      --user matlab \
+    docker run --rm -it \
       --security-opt label=disable \
       --shm-size=512M \
       -p 8888:8888 \
-      -v "$PWD:/workspace:rw" \
+      -v ./PROJECTS:/workspace:rw \
       -w /workspace \
       matlab:R2025b \
       -browser

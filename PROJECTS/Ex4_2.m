@@ -1,0 +1,72 @@
+clear      % ワークスペースからすべての変数を消去
+close all  % すべてのFigureを消去
+clc        % コマンド ウィンドウのクリア
+
+%シミュレーションパラメータ
+Endtime = 500; %シミュレーション時間
+u = 30;         %入力熱量[W]
+d0 = 25.0;      %外気温[℃]
+K = 1.15;       %システムゲイン
+T = 1115;       %時定数[s]
+L = 15;         %むだ時間[s]
+
+%制御器パラメータ
+r = 50;
+%CHR法
+kc = 0.7*T/(K*L);
+Ti = T;
+Td = 0.5*L;
+p  = [0.7*T/(K*L), 0 , 0 ];
+pi = [0.6*T/(K*L), T , 0];
+pid =[0.95*T/(K*L), 1.36*T, 0.47*L];
+P = [p,pi,pid];
+
+%Simulinkの実行
+filename = 'Ex4_2_sim'; %ファイル名（拡張子なし）
+results = struct;
+
+% ==== Simulation Loop ====
+figure('Name','PID Comparison','NumberTitle','off');
+tiledlayout(2,1);
+
+nexttile(1); hold on; grid on;
+title('Output Response (y)');
+xlabel('Time [s]'); ylabel('Temperature [°C]');
+xlim([0 Endtime]); ylim([25 65]);
+
+nexttile(2); hold on; grid on;
+title('Control Signal (u)');
+xlabel('Time [s]'); ylabel('Flow rate [u]');
+xlim([0 Endtime]); ylim([0 350]);
+
+for i = 1:length(Kc_values)
+    % Select which parameters to vary
+    kc = Kc_values(i);
+    Ti = Ti_base;
+    Td = Td_base;
+
+    % Run Simulink
+    simOut = sim(filename, 'ReturnWorkspaceOutputs', 'on');
+
+    % Extract signals
+    t = simOut.simout.time;
+    y_tilde = simOut.simout.Data(:,1);
+    u_data = simOut.simout.Data(:,2);
+
+    % Plot
+    nexttile(1);
+    plot(t, y_tilde, 'DisplayName', sprintf('Kc=%.2f', kc));
+
+    nexttile(2);
+    plot(t, u_data, 'DisplayName', sprintf('Kc=%.2f', kc));
+
+    % Store results
+    results(i).Kc = kc;
+    results(i).time = t;
+    results(i).y = y_tilde;
+    results(i).u = u_data;
+end
+
+% Add legends
+nexttile(1); legend show;
+nexttile(2); legend show;

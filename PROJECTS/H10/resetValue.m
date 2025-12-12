@@ -1,0 +1,54 @@
+set(ui1,'string','0');      %ui1の値をリセット
+set(ui2,'string','0');      %ui2の値をリセット
+
+set(ui6,'string','0');      %ui6の値をリセット
+set(ui7,'string','0');      %ui7の値をリセット
+set(ui8,'string','0');      %ui8の値をリセット
+
+set(ui10,'string','0');     %ui10の値をリセット
+set(ui11,'string','0');     %ui11の値をリセット
+set(ui12,'visible','off');  %ui12の値をリセット
+set(ui13,'string','0');     %ui13の値をリセット 
+pB0=[0;0;0;1];
+pB0_1=pB0+[0;0.05;0;0];
+pB0_2=pB0+[0;-0.05;0;0];
+pB1=[0.5;0;0;1];
+pB1_1=pB1+[0;0.05;0;0];
+pB1_2=pB1+[0;-0.05;0;0];
+pB2=[1.0;0;0;1]; %関節３の位置 
+pB2_1=pB2+[0;0.05;0;0]; 
+pB2_2=pB2+[0;-0.05;0;0]; 
+pT=[1.5;0;0;1]; %先端の位置(3リンク分) 
+pT_1=pT+[0;0.05;0;0];
+pT_2=pT+[0;-0.05;0;0];
+dcirA=0:0.01:2*pi;
+dcirR=0.05;
+dcir=[dcirR.*cos(dcirA);dcirR*sin(dcirA)];
+figure(1);
+plot([pB0_1(1),pB1_1(1)],[pB0_1(2),pB1_1(2)],'LineWidth',3);
+hold on;
+plot([pB0_2(1),pB1_2(1)],[pB0_2(2),pB1_2(2)],'LineWidth',3);
+plot([pB1_1(1),pB2_1(1)],[pB1_1(2),pB2_1(2)],... %アーム２の表示 
+    'LineWidth',3); 
+plot([pB1_2(1),pB2_2(1)],[pB1_2(2),pB2_2(2)],... 
+    'LineWidth',3); 
+plot([pB2_1(1),pT_1(1),pT_2(1),pB2_2(1)],... 
+    [pB2_1(2),pT_1(2),pT_2(2),pB2_2(2)],'LineWidth',3); 
+pDraw=pB0;
+plot(dcir(1,:)+pDraw(1).*ones(size(dcir(1,:))),...
+    dcir(2,:)+pDraw(2).*ones(size(dcir(2,:))),'r',...
+    'LineWidth',3);
+pDraw=pB1;
+plot(dcir(1,:)+pDraw(1).*ones(size(dcir(1,:))),...
+    dcir(2,:)+pDraw(2).*ones(size(dcir(2,:))),'r',...
+    'LineWidth',3);
+pDraw=pB2; 
+plot(dcir(1,:)+pDraw(1).*ones(size(dcir(1,:))),... 
+    dcir(2,:)+pDraw(2).*ones(size(dcir(2,:))),'r',... 
+    'LineWidth',3); 
+hold off;
+axis equal;
+axis([-0.5 1.5 -0.5 1.5]);
+xlabel('X [m]');
+ylabel('Y [m]');
+grid on;

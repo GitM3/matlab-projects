@@ -1,0 +1,106 @@
+clear      
+close all  
+clc        
+% --- Physical/Model params 
+h      = 10;             % W/(m^2*K)
+L      = 10;             % m 
+A      = 4*L^2;          % m^2  
+C      = 1.225*(L^3)*1005;% J/K  
+To     = 32;             % degC
+Qint   = 300;            % W
+COP    = 3.5;            % Ratio
+Pe     = 15000;           % W
+Qac    = COP * Pe;       % W
+
+% --- gains
+fK = @(C,Qac,h,Qint,A) struct( ...
+    'k1', h*A/C, ...
+    'k2', Qint/C, ...
+    'k3', Qac/C );            
+
+% --- Control
+Tset = 22;               % degC
+deadband = 0.8;          % K
+S1 = Tset + deadband;
+S2 = Tset - deadband;
+
+% --- Simulation config 
+simTime = 60 *15;        % seconds
+mdl = 'Sim';
+open(mdl); 
+
+Pe_list  = [6000 9000 12000 15000 18000]; 
+Qac_list = COP .* Pe_list;
+
+colors = lines(max(numel(Qac_list),5));       
+figure('Name','AC Power'); 
+tiledlayout(1,2, 'Padding','compact', 'TileSpacing','compact');
+
+% AC power sweep
+nexttile; hold on; grid on; box on;
+leg1 = strings(1,numel(Qac_list));
+  
+for i = 1:numel(Qac_list)
+    Qac = Qac_list(i);
+    g = fK(C, Qac, h, Qint, A);
+
+    si = Simulink.SimulationInput(mdl);
+    si = si.setModelParameter('StopTime', num2str(simTime));
+    si = si.setVariable('To', To);
+    si = si.setVariable('Tset', Tset);
+    si = si.setVariable('S1', S1);
+    si = si.setVariable('S2', S2);
+    si = si.setVariable('k1', g.k1);
+    si = si.setVariable('k2', g.k2);
+    si = si.setVariable('k3', g.k3);
+    
+    out = sim(si);
+
+    Ti_sig = out.logsout.get('Ti'); % Logged signal
+    t  = Ti_sig.Values.Time;
+    Ti = Ti_sig.Values.Data;
+
+    plot(t/60, Ti, 'LineWidth', 1.7, 'Color', colors(i,:));
+    leg1(i) = sprintf('P_e = %.0f kW', Pe_list(i)/1000);
+end
+xlabel('Time (min)');
+ylabel('Indoor temp T_i (°C)');
+title('Sweep: AC electrical power');
+legend(leg1, 'Location', 'best');
+
+V_scale = [0.5 1 2 3]; % multiples of baseline volume
+C_list  = 1.225*1005 .* (L^3*V_scale);        
+
+nexttile; hold on; grid on; box on;
+leg2 = strings(1,numel(C_list));
+
+for i = 1:numel(C_list)
+    C = C_list(i);
+    g = fK(C, Qac, h, Qint, A);
+
+    si = Simulink.SimulationInput(mdl);
+    si = si.setModelParameter('StopTime', num2str(simTime));
+    si = si.setVariable('To', To);
+    si = si.setVariable('Tset', Tset);
+    si = si.setVariable('S1', S1);
+    si = si.setVariable('S2', S2);
+    si = si.setVariable('k1', g.k1);
+    si = si.setVariable('k2', g.k2);
+    si = si.setVariable('k3', g.k3);
+    
+
+    out = sim(si);
+
+    Ti_sig = out.logsout.get('Ti');
+    t  = Ti_sig.Values.Time;
+    Ti = Ti_sig.Values.Data;
+
+    plot(t/60, Ti, 'LineWidth', 1.7, 'Color', colors(i,:));
+    leg2(i) = sprintf('V = %.1fx', V_scale(i));
+end
+
+xlabel('Time (min)');
+ylabel('Indoor temp T_i (°C)');
+title('Sweep: Room volume (thermal capacitance)');
+legend(leg2, 'Location', 'best');
+

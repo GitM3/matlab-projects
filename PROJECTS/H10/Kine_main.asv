@@ -1,0 +1,125 @@
+clear         % ワークスペースからすべての変数を消去
+close all     %すべてのFigureを消去
+clc           %コマンド　ウィンドウのクリア
+%関節１の回転角度
+ptext1=[5 50 35 20]; %文字列'theta1'の位置
+uicontrol('style','text','position',ptext1,'string','theta1');
+ui1=uicontrol(1,'style','edit','string','0'); %単位 [degree]
+set(ui1, 'position', [60 50 45 20]);%ui1の位置を設定
+%関節２の回転角度
+ptext2=[5 75 40 20]; %文字列'theta2'の位置
+uicontrol('style','text','position',ptext2,'string','theta2');
+ui2=uicontrol(1,'style','edit','string','0'); %単位 [degree]
+set(ui2, 'position', [60 75 45 20]);%ui2の位置を設定
+%関節３の回転角度 
+ptext13=[5 100 40 20]; 
+uicontrol('style','text','position',ptext13,'string','theta3'); %
+ui13=uicontrol(1,'style','edit','string','0'); 
+set(ui13, 'position', [60 100 45 20]);
+%'Kine_Draw'ボタン
+ui3=uicontrol(1,'style','pushbutton','string','Kine_Draw');
+%'drawRobot'を実行
+set(ui3,'position',[10 125 80 20],'callback',...
+    'flag=0;drawRobot');
+%'Reset'ボタン
+ui4=uicontrol(1,'style','pushbutton','string','Reset',...
+    'FontSize',14);
+%'resetValue'を実行
+set(ui4,'position',[470 100 80 60],'callback','resetValue');
+%'Next'ボタン（不可視）
+ui12=uicontrol(1,'style','pushbutton','string','Next',...
+    'Visible','off');
+%'drawRobot'を実行
+set(ui12,'position',[10 25 80 20],'callback',...
+    'flag=2;drawRobot');
+%'IKine_Draw'ボタン
+ui5=uicontrol(1,'style','pushbutton','string','IKine_Draw');
+%'drawRobot'を実行
+set(ui5,'position',[470 370 80 20],'callback',...
+    'flag=1;drawRobot');
+%先端位置xの値
+ptext3=[470 345 30 20];
+uicontrol('style','text','position',ptext3,'string','x');
+ui6=uicontrol(1,'style','edit','string','0'); %単位 [m]
+set(ui6, 'position', [500 345 50 20]);%ui6の位置を設定
+%先端位置yの値
+ptext4=[470 320 30 20];
+uicontrol('style','text','position',ptext4,'string','y');
+ui7=uicontrol(1,'style','edit','string','0'); %単位 [m]
+set(ui7, 'position', [500 320 50 20]);%ui7の位置を設定
+%先端位置zの値
+ptext5=[470 295 30 20];
+uicontrol('style','text','position',ptext5,'string','z');
+ui8=uicontrol(1,'style','text','string','0'); %単位 [m]
+set(ui8, 'position', [500 295 50 20]);%ui8の位置を設定
+%先端姿勢phiの値
+ptext6=[470 270 30 20];
+uicontrol('style','text','position',ptext6,'string','phi');
+ui9=uicontrol(1,'style','text','string','0'); %単位 [degree]
+set(ui9, 'position', [500 270 50 20]);%ui9の位置を設定
+%先端姿勢thetaの値
+ptext7=[470 245 30 20];
+uicontrol('style','text','position',ptext7,'string','theta');
+ui10=uicontrol(1,'style','text','string','0'); %単位 [degree]
+set(ui10, 'position', [500 245 50 20]);%ui10の位置を設定
+%先端姿勢psiの値
+ptext8=[470 220 30 20];
+uicontrol('style','text','position',ptext8,'string','psi');
+ui11=uicontrol(1,'style','text','string','0'); %単位 [degree]
+set(ui11, 'position', [500 220 50 20]);%ui11の位置を設定
+%アームの初期状態
+a1=0.5;                   %アーム１の長さ[m]
+a2=0.5;                   %アーム２の長さ[m]
+a3=0.5;
+pB0=[0;0;0;1];            %関節１の位置
+pB0_1=pB0+[0;0.05;0;0];   %アーム１を描くための点１
+pB0_2=pB0+[0;-0.05;0;0];  %アーム１を描くための点２
+pB1=[a1;0;0;1];           %関節２の位置
+pB1_1=pB1+[0;0.05;0;0];   %アーム１を描くための点３
+pB1_2=pB1+[0;-0.05;0;0];  %アーム１を描くための点４
+pB2=[a1+a2;0;0;1];        %関節３の位置 
+pB2_1=pB2+[0;0.05;0;0];   
+pB2_2=pB2+[0;-0.05;0;0];  
+pT=[a1+a2+a3;0;0;1];       
+pT_1=pT+[0;0.05;0;0];     
+pT_2=pT+[0;-0.05;0;0];
+dcirA=0:0.01:2*pi;        %関節を描くための角度
+dcirR=0.05;               %関節の半径[m]
+dcir=[dcirR*cos(dcirA);dcirR*sin(dcirA)];
+figure(1);
+%アーム１の表示
+plot([pB0_1(1),pB1_1(1)],[pB0_1(2),pB1_1(2)],'LineWidth',3);
+hold on; %現在のプロットを保持
+plot([pB0_2(1),pB1_2(1)],[pB0_2(2),pB1_2(2)],'LineWidth',3);
+%アーム２の表示
+plot([pB1_1(1),pB2_1(1)],[pB1_1(2),pB2_1(2)],...  
+    'LineWidth',3); 
+plot([pB1_2(1),pB2_2(1)],[pB1_2(2),pB2_2(2)],... 
+    'LineWidth',3); 
+%アーム３の表示 % 
+plot([pB2_1(1),pT_1(1),pT_2(1),pB2_2(1)],... 
+    [pB2_1(2),pT_1(2),pT_2(2),pB2_2(2)],'LineWidth',3);
+
+%関節１の表示
+pDraw=pB0;
+plot(dcir(1,:)+pDraw(1)*ones(size(dcir(1,:))),...
+    dcir(2,:)+pDraw(2)*ones(size(dcir(2,:))),'r',...
+    'LineWidth',3);
+%関節２の表示
+pDraw=pB1;
+plot(dcir(1,:)+pDraw(1)*ones(size(dcir(1,:))),...
+    dcir(2,:)+pDraw(2)*ones(size(dcir(2,:))),'r',...
+    'LineWidth',3);
+
+%関節３の表示
+pDraw=pB2; 
+plot(dcir(1,:)+pDraw(1)*ones(size(dcir(1,:))),... 
+    dcir(2,:)+pDraw(2)*ones(size(dcir(2,:))),'r',... 
+    'LineWidth',3); 
+hold off;       %ホールドを解除
+axis equal;     %x,y方向のデータ単位が等しくなる
+%x,y軸の表示範囲を指定（最小値 -1，最大値 1）
+axis([-0.5 1.5 -0.5 1.5]);
+xlabel('X [m]');   %x軸ラベル
+ylabel('Y [m]');   %y軸ラベル
+grid on;           %グリッドラインを追加
